@@ -514,7 +514,7 @@ function CountdownTimer({ timezone }) {
           </div>
         </div>
       ) : (
-        <div className="flex items-end gap-2 md:gap-4">
+        <div className="flex items-end gap-3 md:gap-6">
           {[
             { val: countdown.days, label: "DAYS" },
             { val: countdown.hours, label: "HRS" },
@@ -527,7 +527,7 @@ function CountdownTimer({ timezone }) {
                   isUrgent ? "glow-red" : "glow-amber"
                 }`}
                 style={{
-                  fontSize: i === 0 ? "clamp(1.5rem, 6vw, 3rem)" : "clamp(2.5rem, 10vw, 5rem)",
+                  fontSize: "clamp(2.5rem, 10vw, 5rem)",
                   lineHeight: 1,
                   color: isUrgent ? "#ef4444" : "#f59e0b",
                   letterSpacing: "0.05em",
@@ -536,7 +536,7 @@ function CountdownTimer({ timezone }) {
                 {pad(item.val)}
               </span>
               <span
-                className="font-body text-xs tracking-widest mt-1"
+                className="font-body text-[10px] md:text-xs tracking-widest mt-1"
                 style={{ color: isUrgent ? "rgba(220,38,38,0.5)" : "rgba(245,158,11,0.4)" }}
               >
                 {item.label}
@@ -544,10 +544,11 @@ function CountdownTimer({ timezone }) {
             </div>
           ))}
           <div
-            className="self-start pt-1 font-body text-xs tracking-widest uppercase"
-            style={{ color: "rgba(245,158,11,0.35)" }}
+            className="self-start pt-1.5 font-body text-[9px] md:text-[11px] tracking-[0.2em] leading-tight uppercase border-l border-amber-900/40 pl-3 ml-1"
+            style={{ color: "rgba(245,158,11,0.5)" }}
           >
-            UNTIL<br />APR 22
+            UNTIL<br />
+            <span className="text-amber-500/70">APR 22</span>
           </div>
         </div>
       )}
