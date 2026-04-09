@@ -137,32 +137,23 @@ function getDateInZone(timezone) {
   return new Intl.DateTimeFormat("en-US", opts).format(now);
 }
 
-function getCountdownToTarget(timezone, targetHour = 20) {
+const TARGET_DATE = "2026-04-22T20:00:00-04:00"; // EST target
+
+function getCountdownToTarget(timezone) {
   const now = new Date();
-  // Get current time in the target timezone
-  const parts = new Intl.DateTimeFormat("en-US", {
-    timeZone: timezone,
-    hour: "numeric",
-    minute: "numeric",
-    second: "numeric",
-    hour12: false,
-  }).formatToParts(now);
+  
+  // Create target date object in the correct timezone
+  // For simplicity, we'll parse the target string which includes the offset
+  const target = new Date(TARGET_DATE);
+  
+  const diff = Math.max(0, Math.floor((target - now) / 1000));
 
-  const h = parseInt(parts.find((p) => p.type === "hour")?.value || 0);
-  const m = parseInt(parts.find((p) => p.type === "minute")?.value || 0);
-  const s = parseInt(parts.find((p) => p.type === "second")?.value || 0);
-
-  const currentSeconds = h * 3600 + m * 60 + s;
-  const targetSeconds = targetHour * 3600;
-
-  let diff = targetSeconds - currentSeconds;
-  if (diff < 0) diff += 86400; // next day
-
-  const hours = Math.floor(diff / 3600);
+  const days = Math.floor(diff / 86400);
+  const hours = Math.floor((diff % 86400) / 3600);
   const minutes = Math.floor((diff % 3600) / 60);
   const seconds = diff % 60;
 
-  return { hours, minutes, seconds, total: diff };
+  return { days, hours, minutes, seconds, total: diff };
 }
 
 function pad(n) {
@@ -448,17 +439,17 @@ function SecondaryClockCard({ zone, time, date }) {
   );
 }
 
-function CountdownTimer({ timezone, targetHour = 20 }) {
+function CountdownTimer({ timezone }) {
   const [countdown, setCountdown] = useState(
-    getCountdownToTarget(timezone, targetHour)
+    getCountdownToTarget(timezone)
   );
 
   useEffect(() => {
     const id = setInterval(() => {
-      setCountdown(getCountdownToTarget(timezone, targetHour));
+      setCountdown(getCountdownToTarget(timezone));
     }, 1000);
     return () => clearInterval(id);
-  }, [timezone, targetHour]);
+  }, [timezone]);
 
   const isZero = countdown.total === 0;
   const isUrgent = countdown.total < 3600; // less than 1 hour
@@ -500,7 +491,7 @@ function CountdownTimer({ timezone, targetHour = 20 }) {
             COUNTDOWN
           </div>
           <div className="font-body text-xs tracking-[0.3em] text-amber-900/60 uppercase">
-            TARGET: 20:00 EST · WASHINGTON D.C.
+            TARGET: 20:00 DEN 22/4/2026 · WASHINGTON D.C.
           </div>
         </div>
         {isUrgent && !isZero && (
@@ -525,6 +516,7 @@ function CountdownTimer({ timezone, targetHour = 20 }) {
       ) : (
         <div className="flex items-end gap-2 md:gap-4">
           {[
+            { val: countdown.days, label: "DAYS" },
             { val: countdown.hours, label: "HRS" },
             { val: countdown.minutes, label: "MIN" },
             { val: countdown.seconds, label: "SEC" },
@@ -535,7 +527,7 @@ function CountdownTimer({ timezone, targetHour = 20 }) {
                   isUrgent ? "glow-red" : "glow-amber"
                 }`}
                 style={{
-                  fontSize: "clamp(2.5rem, 10vw, 5rem)",
+                  fontSize: i === 0 ? "clamp(1.5rem, 6vw, 3rem)" : "clamp(2.5rem, 10vw, 5rem)",
                   lineHeight: 1,
                   color: isUrgent ? "#ef4444" : "#f59e0b",
                   letterSpacing: "0.05em",
@@ -549,19 +541,13 @@ function CountdownTimer({ timezone, targetHour = 20 }) {
               >
                 {item.label}
               </span>
-              {i < 2 && (
-                <span
-                  className="absolute"
-                  style={{ display: "none" }}
-                />
-              )}
             </div>
           ))}
           <div
             className="self-start pt-1 font-body text-xs tracking-widest uppercase"
             style={{ color: "rgba(245,158,11,0.35)" }}
           >
-            UNTIL<br />20:00
+            UNTIL<br />APR 22
           </div>
         </div>
       )}
