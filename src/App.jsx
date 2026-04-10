@@ -179,7 +179,7 @@ function LiveIndicator() {
 function StatusBadge({ status, color }) {
   return (
     <span
-      className={`font-body text-xs tracking-widest uppercase font-semibold ${color}`}
+      className={`font-body text-sm tracking-widest uppercase font-semibold ${color}`}
     >
       {status}
     </span>
@@ -191,7 +191,7 @@ function PrimaryClockCard({ zone, time, date }) {
 
   return (
     <div
-      className="relative border-glow rounded-none p-6 md:p-10 flicker overflow-hidden"
+      className="relative border-glow rounded-none p-6 md:p-8 flicker overflow-hidden h-full flex flex-col justify-center"
       style={{
         background:
           "linear-gradient(135deg, rgba(10,10,14,0.98) 0%, rgba(16,8,8,0.98) 100%)",
@@ -253,11 +253,11 @@ function PrimaryClockCard({ zone, time, date }) {
       </div>
 
       {/* Main clock */}
-      <div className="flex items-baseline justify-center gap-2 md:gap-4 my-4 md:my-6">
+      <div className="flex items-baseline justify-center gap-2 md:gap-4 my-4 md:my-8 text-[1.2rem]">
         <span
           className="clock-digit glow-red"
           style={{
-            fontSize: "clamp(4rem, 18vw, 9rem)",
+            fontSize: "clamp(4rem, 15vw, 8rem)",
             lineHeight: 1,
             color: "#ef4444",
             letterSpacing: "0.05em",
@@ -279,7 +279,7 @@ function PrimaryClockCard({ zone, time, date }) {
         <span
           className="clock-digit glow-red"
           style={{
-            fontSize: "clamp(4rem, 18vw, 9rem)",
+            fontSize: "clamp(5rem, 18vw, 11rem)",
             lineHeight: 1,
             color: "#ef4444",
             letterSpacing: "0.05em",
@@ -300,7 +300,7 @@ function PrimaryClockCard({ zone, time, date }) {
         <span
           className="clock-digit"
           style={{
-            fontSize: "clamp(2rem, 8vw, 4.5rem)",
+            fontSize: "clamp(2.5rem, 8vw, 5.5rem)",
             lineHeight: 1,
             color: "rgba(220,38,38,0.65)",
             letterSpacing: "0.05em",
@@ -311,7 +311,7 @@ function PrimaryClockCard({ zone, time, date }) {
       </div>
 
       {/* Date */}
-      <div className="text-center font-body text-sm md:text-base tracking-[0.2em] text-red-900/80 uppercase mt-2">
+      <div className="text-center font-body text-base md:text-xl tracking-[0.2em] text-red-900/80 uppercase mt-4">
         {date}
       </div>
 
@@ -332,7 +332,7 @@ function SecondaryClockCard({ zone, time, date }) {
 
   return (
     <div
-      className="relative rounded-none p-4 md:p-5 secondary-border-glow"
+      className="relative rounded-none p-4 secondary-border-glow h-full flex flex-col justify-center"
       style={{
         background:
           "linear-gradient(135deg, rgba(10,10,14,0.97) 0%, rgba(12,10,8,0.97) 100%)",
@@ -351,15 +351,15 @@ function SecondaryClockCard({ zone, time, date }) {
       {/* Header */}
       <div className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-2">
-          <span className="text-lg">{zone.flag}</span>
+          <span className="text-2xl">{zone.flag}</span>
           <div>
             <div
-              className="font-display tracking-widest text-lg"
+              className="font-display tracking-widest text-2xl md:text-3xl"
               style={{ color: "#e0d4c0", lineHeight: 1 }}
             >
               {zone.label}
             </div>
-            <div className="font-body text-xs tracking-widest text-orange-900/70 uppercase">
+            <div className="font-body text-sm tracking-widest text-orange-900/70 uppercase">
               {zone.sublabel}
             </div>
           </div>
@@ -368,11 +368,11 @@ function SecondaryClockCard({ zone, time, date }) {
       </div>
 
       {/* Clock */}
-      <div className="flex items-baseline gap-1 my-2">
+      <div className="flex items-baseline gap-1 my-3">
         <span
           className="clock-digit glow-orange"
           style={{
-            fontSize: "clamp(2.2rem, 8vw, 3.5rem)",
+            fontSize: "clamp(2.8rem, 6vw, 4.5rem)",
             lineHeight: 1,
             color: "#ea580c",
             letterSpacing: "0.04em",
@@ -383,7 +383,7 @@ function SecondaryClockCard({ zone, time, date }) {
         <span
           className="clock-digit"
           style={{
-            fontSize: "clamp(1.5rem, 5vw, 2.5rem)",
+            fontSize: "clamp(2rem, 4vw, 3.2rem)",
             color: "rgba(234,88,12,0.4)",
             lineHeight: 1,
           }}
@@ -393,7 +393,7 @@ function SecondaryClockCard({ zone, time, date }) {
         <span
           className="clock-digit glow-orange"
           style={{
-            fontSize: "clamp(2.2rem, 8vw, 3.5rem)",
+            fontSize: "clamp(2.8rem, 6vw, 4.5rem)",
             lineHeight: 1,
             color: "#ea580c",
             letterSpacing: "0.04em",
@@ -404,7 +404,7 @@ function SecondaryClockCard({ zone, time, date }) {
         <span
           className="clock-digit"
           style={{
-            fontSize: "clamp(1.5rem, 5vw, 2.5rem)",
+            fontSize: "clamp(2rem, 4vw, 3.2rem)",
             color: "rgba(234,88,12,0.4)",
             lineHeight: 1,
           }}
@@ -414,7 +414,7 @@ function SecondaryClockCard({ zone, time, date }) {
         <span
           className="clock-digit"
           style={{
-            fontSize: "clamp(1.2rem, 3vw, 1.8rem)",
+            fontSize: "clamp(1.5rem, 2.5vw, 2.2rem)",
             color: "rgba(234,88,12,0.5)",
             lineHeight: 1,
           }}
@@ -424,7 +424,7 @@ function SecondaryClockCard({ zone, time, date }) {
       </div>
 
       {/* Date */}
-      <div className="font-body text-xs tracking-widest text-orange-900/60 uppercase mt-1">
+      <div className="font-body text-sm tracking-widest text-orange-900/60 uppercase mt-2">
         {date}
       </div>
 
@@ -456,7 +456,7 @@ function CountdownTimer({ timezone }) {
 
   return (
     <div
-      className={`relative rounded-none p-5 md:p-7 ${isZero ? "alert-flash" : ""}`}
+      className={`relative rounded-none p-4 md:p-8 h-full flex flex-col justify-center ${isZero ? "alert-flash" : ""}`}
       style={{
         background: isUrgent
           ? "linear-gradient(135deg, rgba(16,4,4,0.99) 0%, rgba(20,6,4,0.99) 100%)"
@@ -485,9 +485,9 @@ function CountdownTimer({ timezone }) {
         }}
       />
 
-      <div className="flex items-center justify-between mb-4">
+      <div className="flex items-center justify-between mb-8">
         <div>
-          <div className="font-display text-2xl md:text-3xl tracking-widest text-amber-400/80">
+          <div className="font-display text-3xl md:text-4xl tracking-widest text-amber-400/80">
             COUNTDOWN
           </div>
           <div className="font-body text-xs tracking-[0.3em] text-amber-900/60 uppercase">
@@ -527,7 +527,7 @@ function CountdownTimer({ timezone }) {
                   isUrgent ? "glow-red" : "glow-amber"
                 }`}
                 style={{
-                  fontSize: "clamp(2.5rem, 10vw, 5rem)",
+                  fontSize: "clamp(3.5rem, 12vw, 6.5rem)",
                   lineHeight: 1,
                   color: isUrgent ? "#ef4444" : "#f59e0b",
                   letterSpacing: "0.05em",
@@ -652,7 +652,7 @@ export default function App() {
   return (
     <div
       ref={appRef}
-      className="min-h-screen noise-bg"
+      className="min-h-screen noise-bg flex flex-col"
       style={{
         background:
           "radial-gradient(ellipse at 20% 20%, rgba(60,8,8,0.15) 0%, transparent 50%), radial-gradient(ellipse at 80% 80%, rgba(40,16,4,0.1) 0%, transparent 50%), #080a0c",
@@ -660,7 +660,7 @@ export default function App() {
     >
       {/* ── Header bar ── */}
       <header
-        className="sticky top-0 z-50 flex items-center justify-between px-4 md:px-8 py-3"
+        className="sticky top-0 z-50 flex items-center justify-between px-4 md:px-8 py-2"
         style={{
           background: "rgba(8,10,12,0.95)",
           borderBottom: "1px solid rgba(220,38,38,0.2)",
@@ -735,15 +735,15 @@ export default function App() {
       </header>
 
       {/* ── Main content ── */}
-      <main className="px-3 md:px-6 lg:px-10 py-4 md:py-6 max-w-[1600px] mx-auto">
+      <main className="px-3 md:px-6 lg:px-10 py-4 md:py-6 w-full max-w-[1920px] mx-auto flex-1 flex flex-col justify-center">
 
         {/* Threat level bar */}
-        <div className="mb-4 md:mb-6">
+        <div className="mb-2">
           <ThreatLevel />
         </div>
 
         {/* Top grid: Primary clock + Countdown */}
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 md:gap-5 mb-4 md:mb-5">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 md:gap-6 mb-6">
           {/* Primary clock – takes 3 cols */}
           <div className="lg:col-span-3">
             <PrimaryClockCard
@@ -758,34 +758,6 @@ export default function App() {
               timezone={PRIMARY_ZONE.timezone}
               targetHour={20}
             />
-
-            {/* Ticker / info block */}
-            <div
-              className="mt-4 p-4"
-              style={{
-                background: "rgba(10,10,14,0.97)",
-                border: "1px solid rgba(255,255,255,0.06)",
-              }}
-            >
-              <div className="font-body text-xs tracking-[0.3em] text-white/20 uppercase mb-3">
-                REGION STATUS
-              </div>
-              {SECONDARY_ZONES.map((z) => (
-                <div
-                  key={z.id}
-                  className="flex items-center justify-between py-1.5"
-                  style={{ borderBottom: "1px solid rgba(255,255,255,0.04)" }}
-                >
-                  <div className="flex items-center gap-2">
-                    <span className="text-sm">{z.flag}</span>
-                    <span className="font-body text-xs tracking-widest text-white/40 uppercase">
-                      {z.sublabel}
-                    </span>
-                  </div>
-                  <StatusBadge status={z.status} color={z.statusColor} />
-                </div>
-              ))}
-            </div>
           </div>
         </div>
 
@@ -796,7 +768,7 @@ export default function App() {
               className="h-px flex-1"
               style={{ background: "linear-gradient(90deg, rgba(234,88,12,0.3), transparent)" }}
             />
-            <span className="font-body text-xs tracking-[0.4em] text-orange-600/60 uppercase">
+            <span className="font-body text-sm tracking-[0.4em] text-orange-600/60 uppercase">
               AFFECTED REGIONS
             </span>
             <div
@@ -804,7 +776,7 @@ export default function App() {
               style={{ background: "linear-gradient(90deg, transparent, rgba(234,88,12,0.3))" }}
             />
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3 md:gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3 md:gap-4 flex-1">
             {SECONDARY_ZONES.map((zone, i) => (
               <SecondaryClockCard
                 key={zone.id}
