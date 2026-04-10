@@ -149,13 +149,13 @@ function SecondaryCard({ zone, time, date }) {
   const [hh, mm, ss] = time.split(":");
   return (
     <div className="relative flex flex-col justify-center h-full secondary-border-glow"
-      style={{ background: "linear-gradient(135deg,rgba(10,10,14,0.97),rgba(12,10,8,0.97))", border: "1px solid rgba(234,88,12,0.25)", padding: "1.2vh 1.2vw" }}>
+      style={{ background: "linear-gradient(135deg,rgba(10,10,14,0.97),rgba(12,10,8,0.97))", border: "1px solid rgba(234,88,12,0.25)", padding: "1vh 0.8vw", overflow: "hidden" }}>
       <div className="absolute top-0 left-0 right-0" style={{ height: "1px", background: "linear-gradient(90deg,transparent,rgba(234,88,12,0.6),transparent)" }} />
 
       {/* Header */}
       <div className="flex items-start justify-between" style={{ marginBottom: "0.8vh" }}>
-        <div className="flex items-center" style={{ gap: "0.5vw" }}>
-          <span style={{ fontSize: "2.5vh" }}>{zone.flag}</span>
+        <div className="flex items-center" style={{ gap: "0.4vw" }}>
+          <span style={{ fontSize: "2.2vh" }}>{zone.flag}</span>
           <div>
             <div style={{ fontFamily: "'Bebas Neue'", fontSize: "2.8vh", letterSpacing: "0.1em", color: "#ffffff", lineHeight: 1.1 }}>{zone.label}</div>
             <div style={{ fontFamily: "'Barlow Condensed'", fontSize: "1.3vh", letterSpacing: "0.2em", color: "rgba(255,160,100,0.9)" }}>{zone.sublabel}</div>
@@ -167,13 +167,12 @@ function SecondaryCard({ zone, time, date }) {
       </div>
 
       {/* Clock */}
-      <div className="flex items-baseline" style={{ gap: "0.3vw" }}>
-        <span className="clock-digit glow-orange" style={{ fontSize: "7.5vh", lineHeight: 1, color: "#ea580c", letterSpacing: "0.04em" }}>{hh}</span>
-        <span className="clock-digit" style={{ fontSize: "6vh", lineHeight: 1, color: "rgba(234,88,12,0.45)" }}>:</span>
-        <span className="clock-digit glow-orange" style={{ fontSize: "7.5vh", lineHeight: 1, color: "#ea580c", letterSpacing: "0.04em" }}>{mm}</span>
-        <span className="clock-digit" style={{ fontSize: "6vh", lineHeight: 1, color: "rgba(234,88,12,0.45)" }}>:</span>
-        <span className="clock-digit" style={{ fontSize: "4vh", lineHeight: 1, color: "rgba(234,88,12,0.65)" }}>{ss}</span>
-        <span style={{ fontFamily: "'Barlow Condensed'", fontSize: "1.3vh", letterSpacing: "0.15em", color: "rgba(234,88,12,0.7)", marginLeft: "0.4vw", paddingBottom: "0.8vh", fontWeight: 600 }}>{zone.abbr}</span>
+      <div className="flex items-baseline" style={{ gap: "0.2vw" }}>
+        <span className="clock-digit glow-orange" style={{ fontSize: "7vh", lineHeight: 1, color: "#ea580c", letterSpacing: "0.03em" }}>{hh}</span>
+        <span className="clock-digit" style={{ fontSize: "5.5vh", lineHeight: 1, color: "rgba(234,88,12,0.45)" }}>:</span>
+        <span className="clock-digit glow-orange" style={{ fontSize: "7vh", lineHeight: 1, color: "#ea580c", letterSpacing: "0.03em" }}>{mm}</span>
+        <span className="clock-digit" style={{ fontSize: "5.5vh", lineHeight: 1, color: "rgba(234,88,12,0.45)" }}>:</span>
+        <span className="clock-digit" style={{ fontSize: "3.8vh", lineHeight: 1, color: "rgba(234,88,12,0.65)" }}>{ss}</span>
       </div>
 
       {/* Date */}
@@ -250,26 +249,26 @@ export default function App() {
       </header>
 
       {/* MAIN */}
-      <main style={{ flex: 1, display: "flex", flexDirection: "column", padding: "1vh 1.5vw", gap: "1vh", overflow: "hidden" }}>
+      <main style={{ flex: 1, display: "flex", flexDirection: "column", padding: "0.8vh 0.8vw", gap: "0.8vh", overflow: "hidden" }}>
 
         {/* DEFCON bar */}
         <DefconBar />
 
         {/* Top row: Primary clock + Countdown */}
-        <div style={{ display: "grid", gridTemplateColumns: "3fr 2fr", gap: "1.2vw", flex: "0 0 auto", height: "38vh" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "3fr 2fr", gap: "0.8vw", flex: "0 0 auto", height: "38vh" }}>
           <PrimaryClockCard zone={PRIMARY_ZONE} time={primaryTime} date={primaryDate} />
           <CountdownPanel />
         </div>
 
         {/* AFFECTED REGIONS divider */}
-        <div className="flex items-center" style={{ gap: "1.5vw", flexShrink: 0 }}>
+        <div className="flex items-center" style={{ gap: "1vw", flexShrink: 0 }}>
           <div style={{ flex: 1, height: "1px", background: "linear-gradient(90deg,rgba(234,88,12,0.7),transparent)" }} />
           <span style={{ fontFamily: "'Barlow Condensed'", fontSize: "1.8vh", letterSpacing: "0.45em", color: "rgba(251,146,60,0.95)", fontWeight: 700 }}>AFFECTED REGIONS</span>
           <div style={{ flex: 1, height: "1px", background: "linear-gradient(90deg,transparent,rgba(234,88,12,0.7))" }} />
         </div>
 
         {/* Secondary 10 clocks — 5 cols × 2 rows fills remaining height */}
-        <div style={{ flex: 1, display: "grid", gridTemplateColumns: "repeat(5,1fr)", gridTemplateRows: "repeat(2,1fr)", gap: "0.8vw", overflow: "hidden" }}>
+        <div style={{ flex: 1, display: "grid", gridTemplateColumns: "repeat(5,1fr)", gridTemplateRows: "repeat(2,1fr)", gap: "0.5vw", overflow: "hidden" }}>
           {SECONDARY_ZONES.map((zone, i) => (
             <SecondaryCard key={zone.id} zone={zone} time={secondaryTimes[i].time} date={secondaryTimes[i].date} />
           ))}
