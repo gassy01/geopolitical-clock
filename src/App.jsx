@@ -235,18 +235,18 @@ function PrimaryClockCard({ zone, time, date }) {
             <span className="text-2xl">{zone.flag}</span>
             <span
               className="font-display text-4xl md:text-5xl tracking-widest"
-              style={{ color: "#e8e0d0" }}
+              style={{ color: "#ffffff" }}
             >
               {zone.label}
             </span>
           </div>
-          <div className="font-body text-xs tracking-[0.3em] text-red-600/70 uppercase pl-10">
+          <div className="font-body text-sm tracking-[0.3em] uppercase pl-10" style={{ color: "rgba(255,120,120,0.9)" }}>
             {zone.sublabel} · {zone.abbr}
           </div>
         </div>
         <div className="flex flex-col items-end gap-2">
           <LiveIndicator />
-          <span className="font-body text-xs tracking-widest text-red-600/60 uppercase">
+          <span className="font-body text-xs tracking-widest uppercase" style={{ color: "rgba(255,100,100,0.9)" }}>
             PRIMARY
           </span>
         </div>
@@ -311,7 +311,7 @@ function PrimaryClockCard({ zone, time, date }) {
       </div>
 
       {/* Date */}
-      <div className="text-center font-body text-base md:text-xl tracking-[0.2em] text-red-900/80 uppercase mt-4">
+      <div className="text-center font-body text-base md:text-xl tracking-[0.2em] uppercase mt-4" style={{ color: "rgba(255,160,160,0.85)" }}>
         {date}
       </div>
 
@@ -355,11 +355,11 @@ function SecondaryClockCard({ zone, time, date }) {
           <div>
             <div
               className="font-display tracking-widest text-2xl md:text-3xl"
-              style={{ color: "#e0d4c0", lineHeight: 1 }}
+              style={{ color: "#ffffff", lineHeight: 1 }}
             >
               {zone.label}
             </div>
-            <div className="font-body text-sm tracking-widest text-orange-900/70 uppercase">
+            <div className="font-body text-sm tracking-widest uppercase" style={{ color: "rgba(255,160,100,0.9)" }}>
               {zone.sublabel}
             </div>
           </div>
@@ -424,14 +424,14 @@ function SecondaryClockCard({ zone, time, date }) {
       </div>
 
       {/* Date */}
-      <div className="font-body text-sm tracking-widest text-orange-900/60 uppercase mt-2">
+      <div className="font-body text-sm tracking-widest uppercase mt-2" style={{ color: "rgba(255,160,80,0.8)" }}>
         {date}
       </div>
 
       {/* Abbr */}
       <div
         className="absolute top-3 right-3 font-mono text-xs tracking-widest"
-        style={{ color: "rgba(234,88,12,0.3)" }}
+        style={{ color: "rgba(234,88,12,0.7)" }}
       >
         {zone.abbr}
       </div>
@@ -487,10 +487,10 @@ function CountdownTimer({ timezone }) {
 
       <div className="flex items-center justify-between mb-8">
         <div>
-          <div className="font-display text-3xl md:text-4xl tracking-widest text-amber-400/80">
+          <div className="font-display text-3xl md:text-4xl tracking-widest" style={{ color: "#fbbf24" }}>
             COUNTDOWN
           </div>
-          <div className="font-body text-xs tracking-[0.3em] text-amber-900/60 uppercase">
+          <div className="font-body text-xs tracking-[0.3em] uppercase" style={{ color: "rgba(251,191,36,0.75)" }}>
             TARGET: 20:00 DEN 22/4/2026 · WASHINGTON D.C.
           </div>
         </div>
@@ -536,8 +536,8 @@ function CountdownTimer({ timezone }) {
                 {pad(item.val)}
               </span>
               <span
-                className="font-body text-[10px] md:text-xs tracking-widest mt-1"
-                style={{ color: isUrgent ? "rgba(220,38,38,0.5)" : "rgba(245,158,11,0.4)" }}
+                className="font-body text-xs md:text-sm tracking-widest mt-1 font-semibold"
+                style={{ color: isUrgent ? "rgba(255,80,80,0.9)" : "rgba(251,191,36,0.85)" }}
               >
                 {item.label}
               </span>
@@ -561,38 +561,38 @@ function ThreatLevel() {
     <div
       className="flex items-center gap-4 px-4 py-2 rounded-none"
       style={{
-        background: "rgba(220,38,38,0.08)",
-        border: "1px solid rgba(220,38,38,0.2)",
+        background: "rgba(220,38,38,0.12)",
+        border: "1px solid rgba(220,38,38,0.4)",
       }}
     >
-      <span className="font-body text-xs tracking-[0.3em] text-red-500/70 uppercase">
+      <span className="font-body text-sm tracking-[0.3em] uppercase font-semibold" style={{ color: "rgba(255,100,100,0.95)" }}>
         DEFCON WATCH
       </span>
       {[1, 2, 3, 4, 5].map((level) => (
         <div
           key={level}
-          className="w-5 h-5 md:w-6 md:h-6 flex items-center justify-center rounded-none"
+          className="w-6 h-6 md:w-7 md:h-7 flex items-center justify-center rounded-none"
           style={{
             background:
               level <= 3
                 ? level === 1
-                  ? "rgba(220,38,38,0.9)"
+                  ? "rgba(220,38,38,0.95)"
                   : level === 2
-                  ? "rgba(234,88,12,0.8)"
-                  : "rgba(245,158,11,0.6)"
-                : "rgba(255,255,255,0.05)",
+                  ? "rgba(234,88,12,0.9)"
+                  : "rgba(245,158,11,0.75)"
+                : "rgba(255,255,255,0.08)",
             border:
               level <= 3
-                ? "none"
-                : "1px solid rgba(255,255,255,0.1)",
+                ? "1px solid rgba(255,255,255,0.3)"
+                : "1px solid rgba(255,255,255,0.15)",
           }}
         >
-          <span className="font-mono text-xs font-bold text-white/80">
+          <span className="font-mono text-sm font-bold text-white">
             {level}
           </span>
         </div>
       ))}
-      <span className="font-mono text-xs text-orange-500/60 ml-2">
+      <span className="font-mono text-sm font-bold ml-2" style={{ color: "rgba(251,146,60,0.95)" }}>
         ELEVATED
       </span>
     </div>
@@ -672,7 +672,7 @@ export default function App() {
             className="font-display text-xl md:text-2xl tracking-[0.3em] glow-red"
             style={{ color: "#ef4444" }}
           >
-            GEO<span style={{ color: "#e8e0d0" }}>WATCH</span>
+            GEO<span style={{ color: "#ffffff" }}>WATCH</span>
           </div>
           <div
             className="hidden md:block w-px h-5"
@@ -686,12 +686,12 @@ export default function App() {
         <div className="flex items-center gap-3 md:gap-6">
           {/* UTC clock */}
           <div className="flex items-center gap-2">
-            <span className="font-body text-xs tracking-widest text-white/30 uppercase hidden md:block">
+            <span className="font-body text-xs tracking-widest uppercase hidden md:block" style={{ color: "rgba(255,255,255,0.7)" }}>
               UTC
             </span>
             <span
               className="clock-digit text-sm md:text-base"
-              style={{ color: "rgba(255,255,255,0.4)" }}
+              style={{ color: "rgba(255,255,255,0.85)" }}
             >
               {utcTime}
             </span>
@@ -765,16 +765,16 @@ export default function App() {
         <div className="mb-2">
           <div className="flex items-center gap-4 mb-3">
             <div
-              className="h-px flex-1"
-              style={{ background: "linear-gradient(90deg, rgba(234,88,12,0.3), transparent)" }}
-            />
-            <span className="font-body text-sm tracking-[0.4em] text-orange-600/60 uppercase">
+            className="h-px flex-1"
+            style={{ background: "linear-gradient(90deg, rgba(234,88,12,0.6), transparent)" }}
+          />
+            <span className="font-body text-base tracking-[0.4em] uppercase font-semibold" style={{ color: "rgba(251,146,60,0.95)" }}>
               AFFECTED REGIONS
             </span>
-            <div
-              className="h-px flex-1"
-              style={{ background: "linear-gradient(90deg, transparent, rgba(234,88,12,0.3))" }}
-            />
+          <div
+            className="h-px flex-1"
+            style={{ background: "linear-gradient(90deg, transparent, rgba(234,88,12,0.6))" }}
+          />
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3 md:gap-4 flex-1">
             {SECONDARY_ZONES.map((zone, i) => (
